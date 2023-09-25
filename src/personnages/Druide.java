@@ -26,17 +26,18 @@ public class Druide {
 	
 	public void preparerPotion() {
 		Random nombre = new Random();
-		this.forcePotion = nombre.nextInt(effetPotionMax);
+		this.forcePotion = nombre.nextInt(effetPotionMin) + effetPotionMin;
 		if (this.forcePotion > 7) {
-			System.out.println("J'ai préparé une super potion de force. Sa puissance est : " + nombre);
+			System.out.println("J'ai préparé une super potion de force. Sa puissance est : " + this.forcePotion);
 		}
 		else {
-			System.out.println("Je n'ai pas trouvé tous les ingrédients, ma potion est seulement de force : " + nombre);
+			System.out.println("Je n'ai pas trouvé tous les ingrédients, ma potion est seulement de force : " + this.forcePotion);
 		}
 		
 	}
-	private static void main(String[] args) {
-		// Druide panoramix = new Druide
+	public static void main(String[] args) {
+		Druide panoramix = new Druide("Panoramix",5,10);
+		panoramix.preparerPotion();
 	}
 }
 
