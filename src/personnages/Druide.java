@@ -17,13 +17,20 @@ public class Druide {
 	public String getNom() {
 		return nom;
 	}
+	
 	public void parler(String texte) {
 		System.out.println(prendreParole() + "« " + texte + "»");
 	}
+	
 	private String prendreParole() {
 		return "Le druide " + nom + " : ";
 	}
-	
+	public int getForcePotion() {
+		return forcePotion;
+	}
+	public void setForcePotion(int forcePotion) {
+		this.forcePotion = forcePotion;
+	}
 	public void preparerPotion() {
 		Random nombre = new Random();
 		this.forcePotion = nombre.nextInt(effetPotionMin) + effetPotionMin;
@@ -35,9 +42,26 @@ public class Druide {
 		}
 		
 	}
+	public void booster(Gaulois gaulois) {
+		if (gaulois.getNom() != "Obélix") {
+			System.out.println("Je fais boire à " +gaulois.getNom() + " ma potion de force : " + this.forcePotion);
+			gaulois.boirePotion(this.forcePotion);
+		}
+		else
+		{
+			System.out.println("Non " +gaulois.getNom() + "!... Tu n’auras pas de potion magique !");
+
+		}
+	}
+		
+	
 	public static void main(String[] args) {
-		Druide panoramix = new Druide("Panoramix",5,10);
-		panoramix.preparerPotion();
+		Gaulois asterix = new Gaulois("asterix",8);
+		Druide pano = new Druide("Panoramix",5,10);
+		pano.preparerPotion();
+		Gaulois obelix = new Gaulois("Obélix",80560120);
+		pano.booster(asterix);
+		pano.booster(obelix);
 	}
 }
 
