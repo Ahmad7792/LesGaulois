@@ -13,6 +13,7 @@ public class Village {
 	}
 	public void setChef(Chef chef) {
 		this.chef = chef;
+		this.nbVillageois++;
 	}
 	public String getNom() {
 		return nom;
@@ -21,23 +22,20 @@ public class Village {
 		if (this.nbVillageois < this.nbVillageoisMax) {
 			this.villageois[this.nbVillageois] = gaulois;
 			nbVillageois++;
-			System.out.println("Le gaulois " + gaulois.nom + "a Ã©tÃ© ajoutÃ© au village " + this.nom + ".");
+			System.out.println("Le gaulois " + gaulois.getNom() + " a été ajouté au village " + this.nom + ".");
 		}
 		else {
 			System.out.println("Impossible d'ajouter un habitant au village " + this.nom + ". Il n'y a pas assez de place.");
 		}
 	}
 	public Gaulois trouverHabitant(int numero) {
-		if (0<= numero && numero < this.nbVillageois) {
-			return this.villageois[numero];
-		} else {
-			return this.villageois[0];
-		}
+		return this.villageois[numero];
 	}
+	
 	public void afficherVillageois() {
-		System.out.println("Dans le village " + this.nom + ", dont le chef est " this.chef.getNom() + ", il y a " + this.nbVillageois +" villageois :");
-		for (int i=1;i<=nbVillageois;i++) {
-			System.out.println(i + " : " + this.villageois[i-1]);
+		System.out.println("Dans le village " + this.nom + ", dont le chef est " + this.chef.getNom() + ", il y a " + this.nbVillageois +" villageois :");
+		for (int i=1;i<nbVillageois;i++) {
+			System.out.println(i + " : " + this.villageois[i]);
 		}
 	}
 	
@@ -45,12 +43,15 @@ public class Village {
 		Village village = new Village("Village des Irreductibles",30);
 //		Gaulois gaulois = village.trouverHabitant(30);
 //		30 est l'indice du 31me villageois. or il n'y en a que 30
-		Chef Abraracourcix = new Chef("Abraracourcix",6,village);
+		Chef abraracourcix = new Chef("Abraracourcix",6,village);
+		village.setChef(abraracourcix);
 		Gaulois asterix = new Gaulois("Asterix",8);
 		village.ajouterHabitant(asterix);
 		Gaulois gaulois = village.trouverHabitant(1);
 		System.out.println(gaulois);
+		village.afficherVillageois();
 		Gaulois obelix = new Gaulois("Obelix",25);
-		village.ajouterHabitant(obelix));
+		village.ajouterHabitant(obelix);
+		village.afficherVillageois();
 	}
 }
