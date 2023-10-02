@@ -13,7 +13,6 @@ public class Village {
 	}
 	public void setChef(Chef chef) {
 		this.chef = chef;
-		this.nbVillageois++;
 	}
 	public String getNom() {
 		return nom;
@@ -34,8 +33,8 @@ public class Village {
 	
 	public void afficherVillageois() {
 		System.out.println("Dans le village " + this.nom + ", dont le chef est " + this.chef.getNom() + ", il y a " + this.nbVillageois +" villageois :");
-		for (int i=1;i<nbVillageois;i++) {
-			System.out.println(i + " : " + this.villageois[i]);
+		for (int i=0;i<nbVillageois;i++) {
+			System.out.println(i+1 + " : " + this.villageois[i]);
 		}
 	}
 	
